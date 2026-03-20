@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Eid Mubarak - Mahmud Hussain</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, #000428, #004e92);
+    color: white;
+    text-align: center;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 42px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 25px #00ffcc; }
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin-top: 20px;
+}
+
+.name {
+    font-size: 28px;
+    margin-top: 10px;
+    color: #00ffcc;
+}
+
+/* Chand-Taara */
+.star {
+    position: absolute;
+    top: -50px;
+    font-size: 22px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌙 Eid Mubarak 🌙</h1>
+
+<img src="https://i.imgur.com/iRTatqk.jpeg" alt="My Photo">
+
+<div class="name">
+    From: <span id="userName">Mahmud Hussain</span>
+</div>
+
+<script>
+// 👉 Name input
+let name = prompt("Apna naam likho:");
+if(name){
+    document.getElementById("userName").innerText = name;
+}
+
+// Chand + Taara generate
+function createStar() {
+    const star = document.createElement("div");
+    star.classList.add("star");
+
+    // Random: Chand ya Taara
+    let symbols = ["🌙","⭐","✨"];
+    star.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.animationDuration = (3 + Math.random() * 5) + "s";
+    star.style.fontSize = (15 + Math.random() * 20) + "px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 8000);
+}
+
+setInterval(createStar, 250);
+</script>
+
+</body>
+</html>
